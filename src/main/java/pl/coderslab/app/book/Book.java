@@ -1,5 +1,7 @@
 package pl.coderslab.app.book;
 
+import pl.coderslab.app.publisher.Publisher;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,21 @@ public class Book {
     @Column(length = 1024) // przykład modyfukacji, wyżej też
     private String description;
 
+    @ManyToOne
+    private Publisher publisher;
+
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "Book{" +
@@ -22,6 +39,39 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", rating=" + rating +
                 ", description='" + description + '\'' +
+                ", publisher=" + publisher +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
